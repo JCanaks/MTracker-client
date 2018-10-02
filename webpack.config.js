@@ -1,9 +1,12 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.jsx",
   mode: "development",
+  resolve: { extensions: ['*', '.js', '.jsx'] },
   module: {
     rules: [
       {
@@ -18,7 +21,10 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: {
+    modules: [path.resolve(__dirname), 'node_modules'],
+    extensions: ['.js', '.jsx', '.css', '.scss'],
+  },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
@@ -26,9 +32,19 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "public/"),
-    port: 3000,
-    publicPath: "http://localhost:3000/dist/",
-    hotOnly: true
+    port: 5000,
+    publicPath: "http://localhost:5000/dist/",
+    hot: true,
+    historyApiFallback: true,
   },
-  plugins: [ new webpack.HotModuleReplacementPlugin() ]
+  plugins: [ 
+  new HtmlWebpackPlugin({
+    template: path.join(__dirname, 'public', 'index.html'),
+  }),
+  new CleanWebpackPlugin(['./src/dist', 'build'], {
+    root: path.join(__dirname, 'src', 'dist'),
+    dry: false,
+    verbose: true,
+  })
+]
 };
