@@ -5,6 +5,8 @@ import Login from '../views/Login';
 import NotFound from '../views/NotFound';
 import UserRequest from '../views/UserRequest';
 import AdminRequest from '../views/AdminRequest';
+import routePages from '../components/routes';
+const { GuestRoute } = routePages;
 
 export default [
   {
@@ -14,13 +16,13 @@ export default [
     exact: true,
   },
   {
-    type: Route,
+    type: GuestRoute,
     path: '/signup',
     component: Signup,
     exact: true,
   },
   {
-    type: Route,
+    type: GuestRoute,
     path: '/login',
     component: Login,
     exact: true,
