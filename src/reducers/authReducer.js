@@ -47,6 +47,33 @@ export default (state = initialState, action = {}) => {
         }
       };
     }
+    case `${types.LOGIN}_LOADING`: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case `${types.LOGIN}_SUCCESS`:  
+      return {
+        ...state,
+        isLoading: false,
+        errors: {
+          message: '',
+          response: [],
+        },
+        token: action.payload.data.token,
+        role: action.payload.data.role,
+      };
+      case `${types.LOGIN}_FAILURE`: {
+        return {
+          ...state,
+          isLoading: false,
+          errors: {
+            message: action.payload.message,
+            response: action.payload.response,
+          }
+        };
+      }
     default:
       return state;
   }

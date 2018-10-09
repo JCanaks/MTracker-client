@@ -15,15 +15,13 @@ describe('Testing mapStateToProps', () => {
     it('should map the state to the props correctly', () => {
         const state = {
             auth: {
-                signupInfo: '',
                 errors: '',
             }
         };
         const componentState = mapStateToProps(state);
         expect(componentState).toEqual(
             {
-                signupInfo: state.auth.signupInfo,
-                errors: state.auth.signupInfo,
+                errors: state.auth.errors,
             });
     })
 })

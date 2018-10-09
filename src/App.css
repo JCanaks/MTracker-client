@@ -13,6 +13,12 @@
     padding-top: 5em; 
     padding-bottom: 7em;
 }
+.signin-body{
+    text-align: center;
+    background-color: #22c2f7;
+    padding-top: 10em; 
+    padding-bottom: 14em;
+}
 .form-flex{
     display: flex;
     background: white;

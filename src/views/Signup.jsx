@@ -122,9 +122,8 @@ export class Signup extends Component {
     }
 }
 export const mapStateToProps = (state) => {
-    const { signupInfo, errors } = state.auth;
+    const { errors } = state.auth;
     return {
-        signupInfo,
         errors,
     };
 };

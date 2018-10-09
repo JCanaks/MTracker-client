@@ -6,9 +6,9 @@ import AuthButtonComponent from './AuthButtonComponent';
 const AuthForm = (props) => {
     const { headerText, inputClass, inputTypes,
         departments, formType, buttonAttributes,
-        signup, errorText, handleInput } = props; 
+        signup, errorText, handleInput, login } = props; 
     return (
-        <form onSubmit={signup}>
+        <form onSubmit={signup ? signup : login}>
             <div className="form-flex">
                 <AuthHeader headerText={headerText} />
                 <h3>Simple, easy to use, Maintenance System</h3>
