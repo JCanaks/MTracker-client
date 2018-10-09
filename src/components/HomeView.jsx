@@ -6,7 +6,7 @@ const HomeView = () => {
             <h1 className="landing-header">Maintenance Tracker</h1>
             <h3 className="landing-text">Handle Repairs and Replacements with Maintenance Tracker</h3>
             <a href="signup.html">
-                <button type="submit" class="landing-btn">Sign Up Now</button>
+                <button type="submit" className="landing-btn">Sign Up Now</button>
             </a>
         </div>
     );

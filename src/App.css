@@ -1,11 +1,92 @@
 .App {
     margin: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
  .header {
     display: flex;
     flex-flow: row;
     width:100%;
+}
+.signup-body{
+    text-align: center;
+    background-color: #22c2f7;
+    padding-top: 5em; 
+    padding-bottom: 7em;
+}
+.form-flex{
+    display: flex;
+    background: white;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    margin-right:30%;
+    margin-left:30%;
+    border-radius: 25px;
+    color:#737373;
+    padding: 2.5em;
+}
+.form-header {
+    margin-bottom: -0.4em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:  #666;
+    font-size: 2em;
+}
+.auth-select-class{
+    width: 80%;
+    color:#737373;
+    border-radius: 25px;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    margin-top: 0.5em;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:11pt;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.auth-info{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:10pt;
+    font-weight: 900;
+    color:  #f11207;
+}
+.auth-input-class{
+    width: 80%;
+    padding: 1em;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    color:#737373;
+    border-radius: 4px;
+    margin-top: 0.5em;
+    box-sizing: border-box;
+    font-size:12pt;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.form-flex h3{
+    margin-bottom: 1.5em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:12pt;
+    font-weight: 900;
+    color:  #666;
+}
+.format{
+    font-size: 80%;
+    color: rgb(133, 133, 133);
+}
+.auth-submit-btn{
+    padding: 1em;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 80%;
+    background-color: #ff554d;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    font-size:11pt;
 }
 .logo {
   display: flex;

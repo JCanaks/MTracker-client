@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const NavBar = () => {
+const NavBar = (props) => {
+    const {token, logout, headerClass, logoClass, menuClass} = props;
     return (
-        <div className="header">
-            <div className="logo">
+        <div className={headerClass}>
+            <div className={logoClass}>
                 <div>
                     <img src="https://res.cloudinary.com/dgwphdxui/image/upload/v1538569660/Mtracker/Images/wheel-logo.png" />
                 </div>
@@ -12,11 +13,21 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <div className="menubar">
-            <Link to="/">Home</Link>
-            <Link to="/login">Sign In</Link>
-            <Link to="/signup">Sign Up</Link>
-            </div>
+            {
+                !token ? (
+                    <div className={menuClass}>
+                        <Link to="/">Home</Link>
+                        <Link to="/login">Sign In</Link>
+                        <Link to="/signup">Sign Up</Link>
+                    </div>
+                )
+                    : (
+                        <div className={menuClass}>
+                            <Link to="/">Home</Link>
+                            <Link to="#"><span onClick={logout}>Logout</span></Link>
+                        </div>
+                    )
+            }
         </div>
     );
 }

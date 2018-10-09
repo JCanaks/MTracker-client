@@ -7,11 +7,12 @@ import types from '../actions/actionTypes';
  * @returns {Function} next
  */
 const authMiddleware = () => next => (action) => {
-  if (action.type === `${types.LOGIN}_SUCCESS`) {
+  if (action.type === `${types.LOGIN}_SUCCESS`
+    || action.type === `${types.SIGN_UP}_SUCCESS`) {
     let payloadData = action.payload.data;
 
     const { token } = payloadData;
-    action.payload.token = token;
+    // action.payload.token = token;
     localStorage.setItem('token', token);
   }
   if (action.type === types.LOGOUT) {

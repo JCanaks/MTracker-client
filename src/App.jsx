@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import Main from './views/Main';
 
 const App = () => (
-  <div className="App">
+  <div>
     <Route component={Header} />
     <Main />
     <Footer />
