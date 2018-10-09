@@ -23,6 +23,7 @@ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 
 const signup = () => {};
 const handleInput = () => {};
+const login =() =>{};
 const logout =() =>{};
 const event = {
     preventDefault: () => 'event',
@@ -34,6 +35,14 @@ const userData = {
     department: '',
     userEmail: '',
     userPhonenumber: '',
+}
+const loginUserData = {
+    userPassword: '',
+    userEmail: '',
+}
+const loginUserData2 = {
+    userPassword: 'Jenny Flowers',
+    userEmail: '1234556@3',
 }
 const userData2 = {
     userFullname: 'Jenny Flowers',
@@ -117,4 +126,7 @@ export default {
     token,
     logout,
     userRole,
+    loginUserData,
+    login,
+    loginUserData2
 };

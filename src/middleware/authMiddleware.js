@@ -12,7 +12,6 @@ const authMiddleware = () => next => (action) => {
     let payloadData = action.payload.data;
 
     const { token } = payloadData;
-    // action.payload.token = token;
     localStorage.setItem('token', token);
   }
   if (action.type === types.LOGOUT) {

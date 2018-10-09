@@ -6,11 +6,17 @@ const signup = user => ({
   payload: axiosInstance().post('/signup',user)
 });
 
+const login = user => ({
+  type: types.LOGIN,
+  payload: axiosInstance().post('/login',user)
+});
+
 const logout = () => ({
   type: types.LOGOUT,
 });
 
-export default {
+export default  {
   signup,
-  logout
+  logout,
+  login
 };

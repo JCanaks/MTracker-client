@@ -4,9 +4,9 @@ const AuthView = (props) => {
     const { headerText, inputClass, 
         inputTypes, departments, formType,
          buttonAttributes, signup, errorText,
-         handleInput,} = props;
+         handleInput,login} = props;
     return (
-        <div className="signup-body">
+        <div className={formType=='Sign up'?"signup-body":"signin-body"}>
             <AuthForm
                 headerText={headerText}
                 inputClass={inputClass}
@@ -17,6 +17,7 @@ const AuthView = (props) => {
                 signup={signup}
                 errorText={errorText}
                 handleInput={handleInput}
+                login={login}
             />
         </div>
     );
