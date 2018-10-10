@@ -74,6 +74,12 @@ export default (state = initialState, action = {}) => {
           }
         };
       }
+      case types.PERSIST_LOGIN:
+      return {
+        ...state,
+        token: action.payload.token,
+        role: action.payload.role,
+      };
     default:
       return state;
   }
