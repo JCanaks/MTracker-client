@@ -1,10 +1,10 @@
 import React from 'react';
 const Search = (props) => {
-    const { showModal } = props;
+    const { showModal, search } = props;
     return (
         <div className="header">
             <div className="search-div">
-                <input className="request-search" type="text" id="searchInput" onKeyUp="search()" placeholder="Search...."
+                <input className="request-search" type="text" id="searchInput" onKeyUp={search} placeholder="Search...."
                     title="Type in a description"/>
             </div>
                 <div className="request-button-align">
