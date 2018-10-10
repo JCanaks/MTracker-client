@@ -16,10 +16,16 @@ const getRequest = (requestId) => ({
 const newRequest = () => ({
     type: types.NEW_REQUEST,
 });
+const updateRequest = (requestId, updateValues) => ({
+    type: types.UPDATE_REQUEST,
+    payload: axiosInstance().put(`/requests/${Number(requestId)}`,updateValues)
+});
+
 
 export default {
     createRequest,
     newRequest,
     getRequests,
     getRequest,
+    updateRequest
 };

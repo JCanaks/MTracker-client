@@ -10,7 +10,9 @@ const RequestView = (props) => {
         showModal, closeModal, exitModal,
         handleInput, createRequest,
         errorText, UserRequestTableColumns, requests,
-        showDetailsModal, displayStyle, closeDetailsModal, request, search } = props
+        showDetailsModal, displayStyle, closeDetailsModal,
+        search, updateRequest, handleUpdateInput, request,
+        updateData } = props
     return (
         <div>
             <div className={requestRowClass}>
@@ -45,7 +47,11 @@ const RequestView = (props) => {
                 displayStyle={displayStyle}
                 exitModal={exitModal}
                 closeDetailsModal={closeDetailsModal}
+                updateRequest={updateRequest}
+                handleUpdateInput={handleUpdateInput}
                 request={request}
+                updateData={updateData}
+                errorText={errorText}
             />
         </div>
     );

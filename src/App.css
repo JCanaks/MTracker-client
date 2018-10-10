@@ -568,9 +568,6 @@
         width: 60%;
         margin-left: 1em;
     }
-    .column-display{
-        display: none;
-    }
     .request-form-font input[type=text]{
         width: 60%;
         margin-left: 1em;
@@ -595,17 +592,17 @@
         width: 50%;
     }
     .modal-content {
-        font-size:9pt;
+        font-size:12pt;
     }
     .modal-content select{
-        font-size:11pt;
+        font-size:12pt;
     }
     .modal-content textarea{
-        font-size:11pt;
+        font-size:12pt;
     }
     
     .modal-content input[type=text]{
-        font-size:11pt;
+        font-size:12pt;
     }
 }
 @media only screen and (max-width: 2000px) and (min-width: 1024px) {

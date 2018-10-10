@@ -10,6 +10,7 @@ export const initialState = {
     },
     request: {},
     requests: [],
+    updated: false,
     success: false
 };
 
@@ -23,6 +24,7 @@ export default (state = initialState, action = {}) => {
                     response: [],
                 },
                 success: false,
+                updated: false,
                 request: {}
             };
         }
@@ -99,7 +101,7 @@ export default (state = initialState, action = {}) => {
                 },
                 request: action.payload.data,
             };
-        case `${types.GET_REQUEST}_FAILURE`: {
+        case `${types.UPDATE_REQUEST}_FAILURE`: {
             return {
                 ...state,
                 isLoading: false,
@@ -107,6 +109,33 @@ export default (state = initialState, action = {}) => {
                     message: action.payload.message,
                     response: action.payload.response,
                 }
+            };
+        }
+        case `${types.UPDATE_REQUEST}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.UPDATE_REQUEST}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                updated: true,
+            };
+        case `${types.UPDATE_REQUEST}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                },
+                updated:false,
             };
         }
         default:
