@@ -11,11 +11,13 @@ const authMiddleware = () => next => (action) => {
     || action.type === `${types.SIGN_UP}_SUCCESS`) {
     let payloadData = action.payload.data;
 
-    const { token } = payloadData;
+    const { token, role } = payloadData;
     localStorage.setItem('token', token);
+    localStorage.setItem('role', role)
   }
   if (action.type === types.LOGOUT) {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
   }
   return next(action);
 };

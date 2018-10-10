@@ -15,7 +15,7 @@ export class Signup extends Component {
                 'Technology', 'Human Resource',
             ],
             userData: {
-                userFullname:'',
+                userFullname: '',
                 userPassword: '',
                 department: '',
                 userEmail: '',
@@ -68,39 +68,39 @@ export class Signup extends Component {
     componentWillReceiveProps(nextProps) {
         if (Array.isArray(nextProps.errors.message)) {
             this.setState({
-                errorText:  nextProps.errors.message[0].message
+                errorText: nextProps.errors.message[0].message
             })
         }
-        else{
+        else {
             this.setState({
-                errorText:  nextProps.errors.message
+                errorText: nextProps.errors.message
             })
         }
     }
-    handleInput(event){
+    handleInput(event) {
         event.preventDefault();
-        const { userData }= this.state;
+        const { userData } = this.state;
         this.setState({
-          userData : {
-            ...userData,
-            [event.target.id]: event.target.value,
-          },
+            userData: {
+                ...userData,
+                [event.target.id]: event.target.value,
+            },
         });
-      }
+    }
     signup(event) {
         event.preventDefault();
-        const{ userData } = this.state; 
+        const { userData } = this.state;
         const { signup } = this.props;
         signup(userData);
         this.setState({
-            userData : {
-                userFullname:'',
+            userData: {
+                userFullname: '',
                 userPassword: '',
                 department: '',
                 userEmail: '',
                 userPhonenumber: '',
             },
-          })
+        })
     }
     render() {
         const { headerText, inputClass,
