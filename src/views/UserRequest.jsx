@@ -46,6 +46,9 @@ class UserRequest extends Component {
             style: {
                 display: 'none'
             },
+            displayStyle: {
+                display: 'none'
+            },
             requestData: {
                 requestType: '',
                 requestLevel: '',
@@ -57,6 +60,8 @@ class UserRequest extends Component {
         this.exitModal = this.exitModal.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.createRequest = this.createRequest.bind(this);
+        this.showDetailsModal = this.showDetailsModal.bind(this);
+        this.closeDetailsModal = this.closeDetailsModal.bind(this);
 
     }
 
@@ -109,8 +114,12 @@ class UserRequest extends Component {
 
     exitModal(event) {
         const requestModal = document.getElementById('modal');
+        const detailsModal = document.getElementById('detailsModal');
         if (event.target === requestModal) {
             this.setState({ style: { display: 'none' } })
+        }
+        if (event.target === detailsModal) {
+            this.setState({ displayStyle: { display: 'none' } })
         }
     }
     showModal(event) {
@@ -125,16 +134,26 @@ class UserRequest extends Component {
                 style: { display: 'block' },
             })
     }
+    showDetailsModal(event) {
+        const { getRequest } = this.props;
+        getRequest(event.target.value);
+        this.setState(
+            {
+                errorText: '',
+                displayStyle: { display: 'block' },
+            })
+    }
     closeModal() {
         this.setState({ style: { display: 'none' } })
     }
-
+    closeDetailsModal() {
+        this.setState({ displayStyle: { display: 'none' } })
+    }
     render() {
         const { requestRowClass, textMarginClass,
-            textInfoClass, hideModal, style,
-            requestData, errorText,
-            UserRequestTableColumns} = this.state;
-        const { role, requests} = this.props;
+            textInfoClass, hideModal, style, errorText,
+            UserRequestTableColumns,displayStyle} = this.state;
+        const { role, requests,request} = this.props;
         return (
             <RequestView
                 requestRowClass={requestRowClass}
@@ -151,6 +170,10 @@ class UserRequest extends Component {
                 errorText={errorText}
                 UserRequestTableColumns={UserRequestTableColumns}
                 requests={requests}
+                showDetailsModal={this.showDetailsModal}
+                displayStyle={displayStyle}
+                closeDetailsModal={this.closeDetailsModal}
+                request={request}
             />
         );
     }
@@ -170,4 +193,5 @@ export default connect(mapStateToProps, {
     createRequest: requestAction.createRequest,
     newRequest: requestAction.newRequest,
     getRequests: requestAction.getRequests,
+    getRequest: requestAction.getRequest,
 })(UserRequest);

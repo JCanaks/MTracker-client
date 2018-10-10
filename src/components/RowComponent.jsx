@@ -1,6 +1,6 @@
 import React from 'react';
 const RowComponent = (props) => {
-    const { requests } = props;
+    const { requests, showDetailsModal } = props;
     return (
         <tbody>
             {
@@ -12,7 +12,7 @@ const RowComponent = (props) => {
                         <td className="column-display">{request.requestLevel}</td>
                         <td className="column-display">{request.requestDate.substring(0, 10)}</td>
                         <td className="column-display">{request.requestStatus}</td>
-                        <td><button value={request.requestId}>View Details</button></td>
+                        <td><button onClick={showDetailsModal} value={request.requestId}>View Details</button></td>
                     </tr>
                 )) : <div>You have no Requests</div>}
         </tbody>

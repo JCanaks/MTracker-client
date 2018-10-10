@@ -1,14 +1,16 @@
 import React from 'react';
 import Search from './Search';
 import ModalComponent from './ModalComponent';
-import RequestTable  from './RequestTable';
+import RequestDetailsModal from './RequestDetailsModal';
+import RequestTable from './RequestTable';
 
 const RequestView = (props) => {
     const { requestRowClass, textMarginClass,
         textInfoClass, role, style,
         showModal, closeModal, exitModal,
-        handleInput, createRequest, 
-        errorText, UserRequestTableColumns, requests } = props
+        handleInput, createRequest,
+        errorText, UserRequestTableColumns, requests,
+        showDetailsModal, displayStyle,closeDetailsModal,request } = props
     return (
         <div>
             <div className={requestRowClass}>
@@ -25,8 +27,10 @@ const RequestView = (props) => {
                 />
                 : ''}
             <RequestTable
-            UserRequestTableColumns={UserRequestTableColumns}
-            requests={requests}
+                UserRequestTableColumns={UserRequestTableColumns}
+                requests={requests}
+                showDetailsModal={showDetailsModal}
+                displayStyle={displayStyle}
             />
             <ModalComponent
                 style={style}
@@ -35,6 +39,12 @@ const RequestView = (props) => {
                 handleInput={handleInput}
                 createRequest={createRequest}
                 errorText={errorText}
+            />
+            <RequestDetailsModal
+                displayStyle={displayStyle}
+                exitModal={exitModal}
+                closeDetailsModal={closeDetailsModal}
+                request={request}
             />
         </div>
     );
