@@ -6,9 +6,9 @@ import axios from 'axios';
  * @returns { instance } an instance of axios
  */
 const axiosInstance = () => {
-  let apiUrl = 'https://mtracker-client.herokuapp.com/api';
+  let apiUrl = 'https://mntracker.herokuapp.com/api/v1';
   if (process.env.NODE_ENV === 'development') {
-    apiUrl = 'http://localhost:3000/api/v1/auth';
+    apiUrl = 'http://localhost:3000/api/v1';
   }
 
   let token = '';

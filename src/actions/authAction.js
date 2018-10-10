@@ -3,12 +3,12 @@ import axiosInstance from '../services/requestHandler';
 
 const signup = user => ({
   type: types.SIGN_UP,
-  payload: axiosInstance().post('/signup',user)
+  payload: axiosInstance().post('/users/signup',user)
 });
 
 const login = user => ({
   type: types.LOGIN,
-  payload: axiosInstance().post('/login',user)
+  payload: axiosInstance().post('/users/login',user)
 });
 
 const logout = () => ({
