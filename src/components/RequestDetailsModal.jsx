@@ -1,7 +1,9 @@
 import React from 'react';
 const RequestDetailsModal = (props) => {
     const { displayStyle, exitModal, closeDetailsModal,
-        request } = props;
+         updateRequest, handleUpdateInput, request,
+          updateData, errorText } = props;
+         console.log('updateData',updateData)
     return (
         <form>
             <div className="request-modal " id="detailsModal" style={displayStyle} onClick={exitModal}>
@@ -16,13 +18,13 @@ const RequestDetailsModal = (props) => {
                     <div className="details-div">
                         <div className="details-column1">Req. Type:</div>
                         <div className="details-column2">
-                            <input id="requestTypeDetails" type="text" value={request.requestType} />
+                            <input id="requestTypeDetails" type="text" value={updateData.requestTypeDetails} onChange={handleUpdateInput} />
                         </div>
                     </div>
                     <div className="details-div">
                         <div className="details-column1">Req. Level:</div>
                         <div className="details-column2">
-                            <input id="requestLevelDetails" type="text" value={request.requestLevel} />
+                            <input id="requestLevelDetails" type="text" value={updateData.requestLevelDetails} onChange={handleUpdateInput}/>
                         </div>
                     </div>
                     <div className="details-div">
@@ -35,7 +37,7 @@ const RequestDetailsModal = (props) => {
                     </div>
                     <div className="details-div">
                         <div className="details-column1">Date:</div>
-                        <div className="details-column2" id="requestDate">{request.requestDate}</div>
+                        <div className="details-column2" id="requestDate">{request.requestDate?request.requestDate.substring(0,10):''}</div>
                     </div>
                     <div className="details-div">
                         <div className="details-column1">Status:</div>
@@ -47,11 +49,12 @@ const RequestDetailsModal = (props) => {
                         id="descriptionDetails"
                         rows="4"
                         cols="50"
-                        value={request.description}
+                        value={updateData.descriptionDetails}
+                        onChange={handleUpdateInput}
                         placeholder="Type Request Description Here">
                     </textarea>
-                    <div className="details-info" id="details-info"></div>
-                    <input type="submit" onclick="updateRequest()" value="Update" />
+                    <div className="details-info" id="details-info">{errorText}</div>
+                    <input type="submit" onClick={updateRequest} value="Update" />
                 </div>
             </div>
         </form>

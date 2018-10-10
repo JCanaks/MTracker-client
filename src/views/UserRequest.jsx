@@ -54,6 +54,12 @@ class UserRequest extends Component {
                 requestLevel: '',
                 description: ''
             },
+            updateData: {
+                requestId: 0,
+                requestTypeDetails: '',
+                requestLevelDetails: '',
+                descriptionDetails: ''
+            },
         }
         this.showModal = this.showModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -63,14 +69,15 @@ class UserRequest extends Component {
         this.showDetailsModal = this.showDetailsModal.bind(this);
         this.closeDetailsModal = this.closeDetailsModal.bind(this);
         this.search = this.search.bind(this);
+        this.updateRequest = this.updateRequest.bind(this);
+        this.handleUpdateInput = this.handleUpdateInput.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { success, getRequests } = this.props;
-        if (success) {
+        const { success, getRequests, updated, request } = this.props;
+        if (success || updated) {
             getRequests();
         }
-
     }
     componentDidMount() {
         const { success, getRequests } = this.props;
@@ -79,9 +86,26 @@ class UserRequest extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        const { newRequest } = this.props;
-        if (nextProps.success) {
+        const { newRequest, request } = this.props;
+        if (nextProps.request !== request) {
+            this.setState({
+                updateData: {
+                    requestId: nextProps.request.requestId,
+                    requestTypeDetails: nextProps.request.requestType
+                        ? nextProps.request.requestType : '',
+                    requestLevelDetails: nextProps.request.requestLevel
+                        ? nextProps.request.requestLevel : '',
+                    descriptionDetails: nextProps.request.description
+                        ? nextProps.request.description : '',
+                }
+            })
+        }
+        if (nextProps.success || nextProps.updated) {
             this.setState({ style: { display: 'none' } })
+            newRequest();
+        }
+        if (nextProps.updated) {
+            this.setState({ displayStyle: { display: 'none' } })
             newRequest();
         }
         if (Array.isArray(nextProps.errors.message.details)) {
@@ -93,6 +117,29 @@ class UserRequest extends Component {
                 errorText: nextProps.errors.message
             })
         }
+    }
+    handleUpdateInput(event) {
+        event.preventDefault();
+        const { updateData } = this.state;
+        this.setState({
+            updateData: {
+                ...updateData,
+                [event.target.id]: event.target.value,
+            },
+        });
+
+    }
+    updateRequest(event) {
+        event.preventDefault();
+        const { updateRequest } = this.props;
+        const { updateData } = this.state;
+        const updateValues = {
+            requestType: updateData.requestTypeDetails,
+            requestLevel: updateData.requestLevelDetails,
+            description: updateData.descriptionDetails,
+        }
+        const requestId = updateData.requestId;
+        updateRequest(requestId, updateValues)
     }
     createRequest(event) {
         event.preventDefault();
@@ -183,7 +230,8 @@ class UserRequest extends Component {
     render() {
         const { requestRowClass, textMarginClass,
             textInfoClass, hideModal, style, errorText,
-            UserRequestTableColumns, displayStyle } = this.state;
+            UserRequestTableColumns, displayStyle,
+            updateData } = this.state;
         const { role, requests, request } = this.props;
         return (
             <RequestView
@@ -206,12 +254,15 @@ class UserRequest extends Component {
                 closeDetailsModal={this.closeDetailsModal}
                 request={request}
                 search={this.search}
+                updateRequest={this.updateRequest}
+                handleUpdateInput={this.handleUpdateInput}
+                updateData={updateData}
             />
         );
     }
 }
 export const mapStateToProps = (state) => {
-    const { request, success, errors, requests } = state.request;
+    const { request, success, errors, requests, updated } = state.request;
     const { role } = state.auth;
     return {
         request,
@@ -219,6 +270,7 @@ export const mapStateToProps = (state) => {
         success,
         errors,
         requests,
+        updated,
     };
 };
 export default connect(mapStateToProps, {
@@ -226,4 +278,5 @@ export default connect(mapStateToProps, {
     newRequest: requestAction.newRequest,
     getRequests: requestAction.getRequests,
     getRequest: requestAction.getRequest,
+    updateRequest: requestAction.updateRequest,
 })(UserRequest);
