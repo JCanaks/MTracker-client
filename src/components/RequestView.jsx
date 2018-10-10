@@ -10,7 +10,7 @@ const RequestView = (props) => {
         showModal, closeModal, exitModal,
         handleInput, createRequest,
         errorText, UserRequestTableColumns, requests,
-        showDetailsModal, displayStyle,closeDetailsModal,request } = props
+        showDetailsModal, displayStyle, closeDetailsModal, request, search } = props
     return (
         <div>
             <div className={requestRowClass}>
@@ -24,6 +24,7 @@ const RequestView = (props) => {
             {role == 'User'
                 ? <Search
                     showModal={showModal}
+                    search={search}
                 />
                 : ''}
             <RequestTable

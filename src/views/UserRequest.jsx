@@ -53,7 +53,7 @@ class UserRequest extends Component {
                 requestType: '',
                 requestLevel: '',
                 description: ''
-            }
+            },
         }
         this.showModal = this.showModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -62,24 +62,24 @@ class UserRequest extends Component {
         this.createRequest = this.createRequest.bind(this);
         this.showDetailsModal = this.showDetailsModal.bind(this);
         this.closeDetailsModal = this.closeDetailsModal.bind(this);
-
+        this.search = this.search.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { success, getRequests } =this.props;
-        if(success){
+        const { success, getRequests } = this.props;
+        if (success) {
             getRequests();
         }
-        
+
     }
     componentDidMount() {
         const { success, getRequests } = this.props;
-        if(!success){
+        if (!success) {
             getRequests();
         }
     }
     componentWillReceiveProps(nextProps) {
-        const {newRequest}= this.props;
+        const { newRequest } = this.props;
         if (nextProps.success) {
             this.setState({ style: { display: 'none' } })
             newRequest();
@@ -149,11 +149,42 @@ class UserRequest extends Component {
     closeDetailsModal() {
         this.setState({ displayStyle: { display: 'none' } })
     }
+    search(event) {
+        event.preventDefault();
+        const searchValue = event.target.value.toUpperCase();
+        const table = document.getElementById('requestTable');
+        const tr = table.getElementsByTagName('tr');
+        console.log('tr', tr);
+        console.log('tr children', tr[0].children);
+        for (let item of tr) {
+            const column1 = item.getElementsByTagName('td')[0];
+            const column2 = item.getElementsByTagName('td')[1];
+            const column3 = item.getElementsByTagName('td')[2];
+            const column4 = item.getElementsByTagName('td')[3];
+            const column5 = item.getElementsByTagName('td')[4];
+            const column6 = item.getElementsByTagName('td')[5];
+
+            if (column1 && column2 && column3 && column4 && column5 && column6) {
+                if (column1.innerHTML.toUpperCase().indexOf(searchValue) > -1
+                    || column2.innerHTML.toUpperCase().indexOf(searchValue) > -1
+                    || column3.innerHTML.toUpperCase().indexOf(searchValue) > -1
+                    || column4.innerHTML.toUpperCase().indexOf(searchValue) > -1
+                    || column5.innerHTML.toUpperCase().indexOf(searchValue) > -1
+                    || column6.innerHTML.toUpperCase().indexOf(searchValue) > -1
+                ) {
+                    item.style.display = '';
+                }
+                else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+    }
     render() {
         const { requestRowClass, textMarginClass,
             textInfoClass, hideModal, style, errorText,
-            UserRequestTableColumns,displayStyle} = this.state;
-        const { role, requests,request} = this.props;
+            UserRequestTableColumns, displayStyle } = this.state;
+        const { role, requests, request } = this.props;
         return (
             <RequestView
                 requestRowClass={requestRowClass}
@@ -174,6 +205,7 @@ class UserRequest extends Component {
                 displayStyle={displayStyle}
                 closeDetailsModal={this.closeDetailsModal}
                 request={request}
+                search={this.search}
             />
         );
     }
