@@ -57,6 +57,32 @@ export default (state = initialState, action = {}) => {
                 }
             };
         }
+        case `${types.GET_REQUESTS}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.GET_REQUESTS}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                requests: action.payload.data,
+            };
+        case `${types.GET_REQUESTS}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                }
+            };
+        }
         case `${types.GET_REQUEST}_LOADING`: {
             return {
                 ...state,
@@ -71,7 +97,7 @@ export default (state = initialState, action = {}) => {
                     message: '',
                     response: [],
                 },
-                requests: action.payload.data,
+                request: action.payload.data,
             };
         case `${types.GET_REQUEST}_FAILURE`: {
             return {

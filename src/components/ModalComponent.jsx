@@ -2,7 +2,6 @@ import React from 'react';
 const ModalComponent = (props) => {
     const { style, closeModal, exitModal, handleInput,
         createRequest, errorText } = props;
-        console.log('errorText',errorText);
     return (
         <form onSubmit={createRequest}>
             <div className="request-modal" id="modal" style={style} onClick={exitModal}>
