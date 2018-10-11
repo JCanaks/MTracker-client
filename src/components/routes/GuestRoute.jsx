@@ -5,20 +5,21 @@ import PropTypes from 'prop-types';
 
 export const GuestRoute = ({
   token, role, component: Component, ...rest
-}) => (
-  <Route
+}) => {
+ return( <Route
     {...rest}
     render={
       props => (
         !token ? <Component {...props} />
           : <Redirect to={role=='Admin' ? '/requests/admin':'/requests/user' } />
       )}
-  />
-);
+  />)
+      };
 export const mapStateToProps = (state) => {
-  const { token } = state.auth;
+  const { token, role } = state.auth;
   return {
     token,
+    role
   };
 };
 export default connect(mapStateToProps)(GuestRoute);

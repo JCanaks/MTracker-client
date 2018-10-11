@@ -26,7 +26,7 @@ export class Header extends Component {
 
     render() {
         const { headerClass, logoClass, menuClass } = this.state;
-        const { token } = this.props;
+        const { token, role } = this.props;
         return (
             <NavBar
                 headerClass={headerClass}
@@ -34,15 +34,17 @@ export class Header extends Component {
                 menuClass={menuClass}
                 logout={this.logout}
                 token={token}
+                role={role}
             />
         );
     }
 
 }
 export const mapStateToProps = (state) => {
-    const { token } = state.auth;
+    const { token, role } = state.auth;
     return {
-        token
+        token,
+        role
     };
 };
 export default connect(mapStateToProps, {

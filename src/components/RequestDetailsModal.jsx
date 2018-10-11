@@ -3,7 +3,6 @@ const RequestDetailsModal = (props) => {
     const { displayStyle, exitModal, closeDetailsModal,
          updateRequest, handleUpdateInput, request,
           updateData, errorText } = props;
-         console.log('updateData',updateData)
     return (
         <form>
             <div className="request-modal " id="detailsModal" style={displayStyle} onClick={exitModal}>

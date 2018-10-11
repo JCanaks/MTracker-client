@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const NavBar = (props) => {
-    const {token, logout, headerClass, logoClass, menuClass} = props;
+    const { token, logout, headerClass, logoClass,
+        menuClass, role } = props;
     return (
         <div className={headerClass}>
             <div className={logoClass}>
@@ -21,9 +22,16 @@ const NavBar = (props) => {
                         <Link to="/signup">Sign Up</Link>
                     </div>
                 )
-                    : (
+                    :  role == 'User'?(
                         <div className={menuClass}>
                             <Link to="/">Home</Link>
+                            <Link to="/requests/user">Requests</Link>
+                            <Link to="#"><span onClick={logout}>Logout</span></Link>
+                        </div>
+                    ):(
+                        <div className={menuClass}>
+                            <Link to="/">Home</Link>
+                            <Link to="/requests/admin">Requests</Link>
                             <Link to="#"><span onClick={logout}>Logout</span></Link>
                         </div>
                     )

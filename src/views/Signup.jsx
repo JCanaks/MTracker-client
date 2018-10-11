@@ -92,15 +92,6 @@ export class Signup extends Component {
         const { userData } = this.state;
         const { signup } = this.props;
         signup(userData);
-        this.setState({
-            userData: {
-                userFullname: '',
-                userPassword: '',
-                department: '',
-                userEmail: '',
-                userPhonenumber: '',
-            },
-        })
     }
     render() {
         const { headerText, inputClass,
