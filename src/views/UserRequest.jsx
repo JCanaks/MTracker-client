@@ -201,8 +201,6 @@ class UserRequest extends Component {
         const searchValue = event.target.value.toUpperCase();
         const table = document.getElementById('requestTable');
         const tr = table.getElementsByTagName('tr');
-        console.log('tr', tr);
-        console.log('tr children', tr[0].children);
         for (let item of tr) {
             const column1 = item.getElementsByTagName('td')[0];
             const column2 = item.getElementsByTagName('td')[1];
