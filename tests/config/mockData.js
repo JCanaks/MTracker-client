@@ -13,18 +13,79 @@ const signupInfo = {
             + "MDEwOTM1fQ.5yKQckWiP857_AP3Ve8EXSxQB0QuLtKfLS3k2jdV0lg"
     }
 }
+const loginInfo = {
+    data: {
+        message: "Authentication Sucessful, You are now Logged in",
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6I"
+            + "kpXVCJ9.eyJlbWFpbCI6Implbm55Zmxvd2Vy"
+            + "c0BtYWlsLmNvbSIsInVzZXJJZCI6MSwidXNlc"
+            + "kZ1bGxuYW1lIjoiSmVubnkgRmxvd2VycyIsImRl"
+            + "cGFydG1lbnQiOiJUZWNobm9sb2d5IiwiaWF0IjoxNT"
+            + "M5MTk3OTY0LCJleHAiOjE1MzkyMDg3NjR9.au8FJK1i"
+            + "-rzucHOp3Zk9zMy9dzcIe2UkRrOboyRok8Y",
+        role: "User"
+    }
+}
+const createInfo = {
+    data: {
+        message: "Request Created",
+        request: {
+            userId: 1,
+            description: "Fan Repair",
+            department: "Technology",
+            requestType: "Repair",
+            requestedBy: "Jenny Flowers",
+            requestLevel: "Critical",
+            requestStatus: "Pending",
+            requestDate: "2018-10-09T17:08:47.394Z"
+        }
+    }
+}
+const updateInfo = {
+    message: "Request Updated",
+    description: "update description",
+    requestType: "update.requestType",
+    requestLevel: "update.requestLevel",
+}
+const getRequestsInfo = [
+    {
+        requestId: 11,
+        userId: 1,
+        description: "I need help with my faulty Airconditioner",
+        department: "Technology",
+        requestType: "Repair",
+        requestedBy: "Jenny Flowers",
+        requestLevel: "Critical",
+        requestStatus: "Pending",
+        requestDate: "2018-10-10T08:24:11.011+01:00"
+    },
+    {
+        requestId: 10,
+        userId: 1,
+        description: "My Generator needs minor repairs",
+        department: "Technology",
+        requestType: "Repair",
+        requestedBy: "Jenny Flowers",
+        requestLevel: "Minor",
+        requestStatus: "Pending",
+        requestDate: "2018-10-10T08:22:36.812+01:00"
+    },
+]
 
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-+ ".eyJlbWFpbCI6ImphY2tpZWdvb2R5QG1haWwuY2"
-+ "9tIiwidXNlcklkIjoyMiwidXNlckZ1bGxuYW1lIjoi"
-+ "SmFja3kgR29vZHkiLCJkZXBhcnRtZW50IjoiVGVjaG5"
-+ "vbG9neSIsImlhdCI6MTUzOTAwMDEzNSwiZXhwIjoxNTM5"
-+ "MDEwOTM1fQ.5yKQckWiP857_AP3Ve8EXSxQB0QuLtKfLS3k2jdV0lg";
+    + ".eyJlbWFpbCI6ImphY2tpZWdvb2R5QG1haWwuY2"
+    + "9tIiwidXNlcklkIjoyMiwidXNlckZ1bGxuYW1lIjoi"
+    + "SmFja3kgR29vZHkiLCJkZXBhcnRtZW50IjoiVGVjaG5"
+    + "vbG9neSIsImlhdCI6MTUzOTAwMDEzNSwiZXhwIjoxNTM5"
+    + "MDEwOTM1fQ.5yKQckWiP857_AP3Ve8EXSxQB0QuLtKfLS3k2jdV0lg";
 
-const signup = () => {};
-const handleInput = () => {};
-const login =() =>{};
-const logout =() =>{};
+const signup = () => { };
+const closeModal = () => { };
+const exitModal = () => { };
+const createRequest = () => { };
+const handleInput = () => { };
+const login = () => { };
+const logout = () => { };
 const event = {
     preventDefault: () => 'event',
     target: {}
@@ -35,6 +96,9 @@ const userData = {
     department: '',
     userEmail: '',
     userPhonenumber: '',
+}
+const style = {
+    display: 'none',
 }
 const loginUserData = {
     userPassword: '',
@@ -56,8 +120,112 @@ const buttonAttributes = {
     value: 'Sign up',
     btnClass: 'auth-submit-btn'
 }
+const userProps = {
+    success: true,
+    updated: true,
+    getRequests: () => { 
+        return 'requests'
+     },
+    closeModal: () => { },
+    newRequest: () => {},
+    exitModal: () => { },
+    createRequest: () => { },
+    handleInput: () => { },
+    showDetailsModal: () => { },
+    request: {
+        requestId: 0,
+        requestedBy: 'Jenny',
+        requestLevel: 'Critical',
+        description: 'descritpion',
+        department: 'department',
+        requestStatus: 'Pending',
+        requestDate: '2018-03-18'
+    },
+    requests: [
+        {
+            requestId: 0,
+            requestedBy: 'Jenny',
+            requestLevel: 'Critical',
+            description: 'descritpion',
+            department: 'department',
+            requestStatus: 'Pending',
+            requestDate: '2018-03-18'
+        },
+        {
+            requestId: 0,
+            requestedBy: 'Jenny',
+            requestLevel: 'Critical',
+            description: 'descritpion',
+            department: 'department',
+            requestStatus: 'Pending',
+            requestDate: '2018-03-18'
+        },
+        {
+            requestId: 0,
+            requestedBy: 'Jenny',
+            requestLevel: 'Critical',
+            description: 'descritpion',
+            department: 'department',
+            requestStatus: 'Pending',
+            requestDate: '2018-03-18'
+        },
+    ],
+    errorText: '',
+    requestRowClass: 'request-top-row',
+    textMarginClass: 'text-margin1',
+    textInfoClass: 'text-info',
+    headerClass: 'header',
+    hideModal: true,
+    UserRequestTableColumns: [
+        {
+            columnType: 'Request Type',
+            columnClass: ''
+        },
+        {
+            columnType: 'Description',
+            columnClass: ''
+        },
+        {
+            columnType: 'Department',
+            columnClass: 'column-display'
+        },
+        {
+            columnType: 'Request Level',
+            columnClass: 'column-display'
+        },
+        {
+            columnType: 'Request Date',
+            columnClass: 'column-display'
+        },
+        {
+            columnType: 'Status',
+            columnClass: 'column-display'
+        },
+        {
+            columnType: 'Details',
+            columnClass: ''
+        },
+    ],
+    style: {
+        display: 'none'
+    },
+    displayStyle: {
+        display: 'none'
+    },
+    requestData: {
+        requestType: '',
+        requestLevel: '',
+        description: ''
+    },
+    updateData: {
+        requestId: 0,
+        requestTypeDetails: '',
+        requestLevelDetails: '',
+        descriptionDetails: ''
+    },
+}
 const props = {
-    logout: () =>{ return 'logged out'},
+    logout: () => { return 'logged out' },
     errorText: '',
     headerText: 'Sign up',
     inputClass: 'auth-input-class',
@@ -128,5 +296,11 @@ export default {
     userRole,
     loginUserData,
     login,
-    loginUserData2
+    loginUserData2,
+    style,
+    userProps,
+    loginInfo,
+    createInfo,
+    getRequestsInfo,
+    updateInfo
 };

@@ -10,7 +10,6 @@ const authMiddleware = () => next => (action) => {
   if (action.type === `${types.LOGIN}_SUCCESS`
     || action.type === `${types.SIGN_UP}_SUCCESS`) {
     let payloadData = action.payload.data;
-
     const { token, role } = payloadData;
     localStorage.setItem('token', token);
     localStorage.setItem('role', role)
