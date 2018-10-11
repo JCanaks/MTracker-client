@@ -7,10 +7,10 @@ const NavBar = (props) => {
         <div className={headerClass}>
             <div className={logoClass}>
                 <div>
-                    <img src="https://res.cloudinary.com/dgwphdxui/image/upload/v1538569660/Mtracker/Images/wheel-logo.png" />
+                <Link to="/"> <img src="https://res.cloudinary.com/dgwphdxui/image/upload/v1538569660/Mtracker/Images/wheel-logo.png" /></Link>
                 </div>
                 <div>
-                    <h6>Maintenance Tracker</h6>
+                <Link to="/"> <h6>Maintenance Tracker</h6></Link>
                 </div>
             </div>
 

@@ -6,7 +6,7 @@ import NotFound from '../views/NotFound';
 import UserRequest from '../views/UserRequest';
 import AdminRequest from '../views/AdminRequest';
 import routePages from '../components/routes';
-const { GuestRoute } = routePages;
+const { GuestRoute, PrivateRoute } = routePages;
 
 export default [
   {
@@ -28,13 +28,13 @@ export default [
     exact: true,
   },
   {
-    type: Route,
+    type: PrivateRoute,
     path: '/requests/user',
     component: UserRequest,
     exact: true,
   },
   {
-    type: Route,
+    type: PrivateRoute,
     path: '/requests/admin',
     component: AdminRequest,
     exact: true,
