@@ -62,12 +62,6 @@ export class Login extends Component {
         const{ userData } = this.state; 
         const { login } = this.props;
         login(userData);
-        this.setState({
-            userData : {
-                userPassword: '',
-                userEmail: '',
-            },
-          })
     }
     render() {
         const { headerText, inputClass,
