@@ -101,7 +101,7 @@ export default (state = initialState, action = {}) => {
                 },
                 request: action.payload.data,
             };
-        case `${types.UPDATE_REQUEST}_FAILURE`: {
+        case `${types.GET_REQUEST}_FAILURE`:
             return {
                 ...state,
                 isLoading: false,
@@ -110,7 +110,6 @@ export default (state = initialState, action = {}) => {
                     response: action.payload.response,
                 }
             };
-        }
         case `${types.UPDATE_REQUEST}_LOADING`: {
             return {
                 ...state,
@@ -135,7 +134,7 @@ export default (state = initialState, action = {}) => {
                     message: action.payload.message,
                     response: action.payload.response,
                 },
-                updated:false,
+                updated: false,
             };
         }
         default:

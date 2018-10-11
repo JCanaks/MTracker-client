@@ -25,7 +25,7 @@ export default (state = initialState, action = {}) => {
         isLoading: true,
       };
     }
-    case `${types.SIGN_UP}_SUCCESS`:  
+    case `${types.SIGN_UP}_SUCCESS`:
       return {
         ...state,
         isLoading: false,
@@ -53,7 +53,7 @@ export default (state = initialState, action = {}) => {
         isLoading: true,
       };
     }
-    case `${types.LOGIN}_SUCCESS`:  
+    case `${types.LOGIN}_SUCCESS`:
       return {
         ...state,
         isLoading: false,
@@ -64,17 +64,17 @@ export default (state = initialState, action = {}) => {
         token: action.payload.data.token,
         role: action.payload.data.role,
       };
-      case `${types.LOGIN}_FAILURE`: {
-        return {
-          ...state,
-          isLoading: false,
-          errors: {
-            message: action.payload.message,
-            response: action.payload.response,
-          }
-        };
-      }
-      case types.PERSIST_LOGIN:
+    case `${types.LOGIN}_FAILURE`: {
+      return {
+        ...state,
+        isLoading: false,
+        errors: {
+          message: action.payload.message,
+          response: action.payload.response,
+        }
+      };
+    }
+    case types.PERSIST_LOGIN:
       return {
         ...state,
         token: action.payload.token,

@@ -1,14 +1,13 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import mockData from '../config/mockData';
-const { userRole, token } = mockData;
+const { token } = mockData;
 import { Router, Redirect } from 'react-router-dom';
-import { GuestRoute, mapStateToProps } from '../../src/components/routes/GuestRoute.jsx';
+import { PrivateRoute, mapStateToProps } from '../../src/components/routes/PrivateRoute';
 
 const state = {
     auth: {
-        token: '',
-        role:''
+        token: 'token',
     }
 };
 describe('Testing mapStateToProps', () => {
@@ -16,13 +15,12 @@ describe('Testing mapStateToProps', () => {
         const componentState = mapStateToProps(state);
         expect(componentState).toEqual(
             {
-                token: state.auth.token,
-                role: state.auth.role
+                token: state.auth.token
             });
     })
 });
 
-describe('Testing the GuestRoute Component', () => {
+describe('Testing the PrivateRoute Component', () => {
     it('should render a passed in component if there is no token', () => {
         const Comp = () => (
             <p>A component</p>
@@ -31,10 +29,11 @@ describe('Testing the GuestRoute Component', () => {
             location: {
                 pathname: '/'
             },
+            replace: () => { },
             listen: () => { }
         };
 
-        const output = GuestRoute({ token: state.auth.token, component: Comp });
+        const output = PrivateRoute({ token: state.auth.token, component: Comp });
         const wrapper = mount(<Router history={history}>{output}</Router>);
         expect(wrapper.contains(<p>A component</p>)).toEqual(true);
     });

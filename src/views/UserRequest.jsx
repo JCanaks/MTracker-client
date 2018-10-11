@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import RequestView from '../components/RequestView';
 import requestAction from '../actions/requestAction';
 
-class UserRequest extends Component {
+export class UserRequest extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -74,7 +74,7 @@ class UserRequest extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { success, getRequests, updated, request } = this.props;
+        const { success, getRequests, updated } = this.props;
         if (success || updated) {
             getRequests();
         }
