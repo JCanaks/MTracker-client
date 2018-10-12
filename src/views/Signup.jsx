@@ -94,9 +94,18 @@ export class Signup extends Component {
         signup(userData);
     }
     render() {
+        const { isLoading } = this.props;
         const { headerText, inputClass,
             inputTypes, departments, formType,
             buttonAttributes, errorText } = this.state;
+        if (isLoading) {
+            return (
+                <div className="center-image">
+                    <div><h1>Loading......</h1></div>
+                    <img class="img-size" src="https://res.cloudinary.com/dgwphdxui/image/upload/v1539342988/Mtracker/gear-spiiner.gif" />
+                </div>
+            )
+        }
         return (
             <AuthView
                 headerText={headerText}
@@ -113,9 +122,10 @@ export class Signup extends Component {
     }
 }
 export const mapStateToProps = (state) => {
-    const { errors } = state.auth;
+    const { errors, isLoading } = state.auth;
     return {
         errors,
+        isLoading
     };
 };
 export default connect(mapStateToProps, {

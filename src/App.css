@@ -3,19 +3,29 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .resolve {
-    background-color: #4CAF50;
+    background-color: #459e49;
     border-radius: 10px;
 } 
-.resolve:hover {background-color: #46a049;}
-
+.resolve:hover {background-color: #5cbd5f;}
+.img-size{
+  width: 30%;
+  height: 30%;
+}
+.center-image{
+    color:#5b6163;
+    ;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 3em;
+}
 .approve {
-    background-color: #08a8dd;
-    border-radius: 10px;
+    background-color:#099aca;
+    ;
+    border-radius: 20px;
 } 
-.approve:hover {background: #0795c5}
-
+.approve:hover {background: #49bde4}
 .reject {
-    background-color: #ff3b30;
+    background-color: #e2332a;
     border-radius: 10px;
 } 
 .reject:hover {background: #ff251a;}
@@ -79,7 +89,7 @@
 .request-form-font input[type=submit]{
     border: none;
     color: white;
-    background-color: #ff554d;
+    background-color: #f16565;
     padding: 6px;
     font-size: 11pt;
     font-weight: 900;
@@ -102,7 +112,7 @@
 
 .details-column2{
     padding: 0.1em;
-    color: #1999c4;
+    color: #a05b5b;
     text-align: left;
     float: left;
     width: 60%;
@@ -156,7 +166,7 @@
 .modal-content input[type=submit]{
     border: none;
     color: white;
-    background-color: #ff554d;
+    background-color: #d85454;
     padding: 1em;
     font-size: 11pt;
     font-weight: 900;
@@ -206,7 +216,7 @@
 }
 .modal-content h3{
     margin-left: 0.5em;
-    color: #1999c4;
+    color: #2c648e;
     font-weight: 900;
 }
 
@@ -240,11 +250,14 @@
     font-weight: 900;
     color: white;
 }
+.view-div button:hover{
+    background-color:#6bc3db;
+}
 
 .view-div button {
     border: none;
     color: white;
-    background-color: #ff554d;
+    background-color: #5dadc3;
     padding: 6px;
     font-size: 11pt;
     font-weight: 900;
@@ -260,19 +273,21 @@
     text-align: left;
     padding: 8px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2em;
 }
 .view-div td{
     font-size:12pt;
     font-weight: 500;
     color:  #404040;
+    font-size: 1em;
 }
 .view-div th:nth-child(odd){
-   background-color: #ffb6b3;
-   color: black;
+   background-color: #c3c0c0 ;
+   color: #476984;
 }
 .view-div th:nth-child(even){
-    background-color: #84ddfb;
-    color: black;  
+    background-color: #c3c0c0 ;
+    color: #476984;  
  }
 
 .view-div tr:nth-child(even) {
@@ -302,10 +317,14 @@
   .set-margin{
     margin-top: 2em;
 }
+
+.request-button:hover{
+    background-color: #d31d13;
+}
   .request-button{
     border: none;
     color: white;
-    background-color: #ff554d;
+    background-color: #f16565;
     margin-top: 1em;
     margin-right: 2em;
     padding: 0.6em;
@@ -342,7 +361,7 @@
     justify-content: flex-start;
 }
 .request-top-row{
-    background-color:  #22c2f7;
+    background-color:  #78a3af;
     display: flex;
     flex-flow: row;
     align-items: baseline;
@@ -360,13 +379,13 @@
   }
 .signup-body{
     text-align: center;
-    background-color: #22c2f7;
+    background-color: #5b6163;
     padding-top: 5em; 
     padding-bottom: 7em;
 }
 .signin-body{
     text-align: center;
-    background-color: #22c2f7;
+    background-color: #5b6163;
     padding-top: 10em; 
     padding-bottom: 14em;
 }
@@ -495,7 +514,7 @@
   padding-top: 10%;
   padding-bottom: 12%;
   text-align: center;
-  background-color: #22c2f7;   
+  background-color: #5b6163;   
 }
 .landing-header {
   color:white;
