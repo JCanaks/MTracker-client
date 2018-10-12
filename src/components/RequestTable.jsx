@@ -2,7 +2,7 @@ import React from 'react';
 import RowComponent from './RowComponent';
 const RequestTable = (props) => {
     const { UserRequestTableColumns, requests,
-         showDetailsModal} = props;
+         showDetailsModal, role} = props;
     return (
         <div className="view-div">
             <table id="requestTable">
@@ -20,6 +20,7 @@ const RequestTable = (props) => {
                 <RowComponent 
                 requests={requests}
                 showDetailsModal={showDetailsModal}
+                role={role}
                 />
             </table>
         </div>);

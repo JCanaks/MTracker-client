@@ -11,7 +11,11 @@ export const initialState = {
     request: {},
     requests: [],
     updated: false,
-    success: false
+    success: false,
+    filter: false,
+    approve: false,
+    resolve: false,
+    disapprove: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -25,7 +29,11 @@ export default (state = initialState, action = {}) => {
                 },
                 success: false,
                 updated: false,
-                request: {}
+                request: {},
+                filter: false,
+                approve: false,
+                resolve: false,
+                disapprove: false,
             };
         }
         case `${types.CREATE_REQUEST}_LOADING`: {
@@ -82,7 +90,8 @@ export default (state = initialState, action = {}) => {
                 errors: {
                     message: action.payload.message,
                     response: action.payload.response,
-                }
+                },
+                requests: [],
             };
         }
         case `${types.GET_REQUEST}_LOADING`: {
@@ -108,7 +117,8 @@ export default (state = initialState, action = {}) => {
                 errors: {
                     message: action.payload.message,
                     response: action.payload.response,
-                }
+                },
+                request: {}
             };
         case `${types.UPDATE_REQUEST}_LOADING`: {
             return {
@@ -135,6 +145,143 @@ export default (state = initialState, action = {}) => {
                     response: action.payload.response,
                 },
                 updated: false,
+            };
+        }
+        case `${types.GET_ADMIN_REQUESTS}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.GET_ADMIN_REQUESTS}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                requests: action.payload.data,
+            };
+        case `${types.GET_ADMIN_REQUESTS}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                },
+                requests: [],
+            };
+        }
+        case `${types.FILTER_REQUESTS}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.FILTER_REQUESTS}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                requests: action.payload.data,
+                filter: true,
+            };
+        case `${types.FILTER_REQUESTS}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                },
+                requests: [],
+                filter: false,
+            };
+        }
+        case `${types.APPROVE_REQUEST}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.APPROVE_REQUEST}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                approve: true,
+            };
+        case `${types.APPROVE_REQUEST}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                },
+                approve: false,
+            };
+        }
+        case `${types.DISAPPROVE_REQUEST}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.DISAPPROVE_REQUEST}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                disapprove: true,
+            };
+        case `${types.DISAPPROVE_REQUEST}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                },
+                disapprove: false,
+            };
+        }
+        case `${types.RESOLVE_REQUEST}_LOADING`: {
+            return {
+                ...state,
+                isLoading: true,
+            };
+        }
+        case `${types.RESOLVE_REQUEST}_SUCCESS`:
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: '',
+                    response: [],
+                },
+                resolve: true,
+            };
+        case `${types.RESOLVE_REQUEST}_FAILURE`: {
+            return {
+                ...state,
+                isLoading: false,
+                errors: {
+                    message: action.payload.message,
+                    response: action.payload.response,
+                },
+                resolve: false,
             };
         }
         default:

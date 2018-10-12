@@ -74,7 +74,7 @@ export class UserRequest extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { success, getRequests, updated } = this.props;
+        const { success, getRequests, updated} = this.props;
         if (success || updated) {
             getRequests();
         }
@@ -229,7 +229,7 @@ export class UserRequest extends Component {
         const { requestRowClass, textMarginClass,
             textInfoClass, hideModal, style, errorText,
             UserRequestTableColumns, displayStyle,
-            updateData } = this.state;
+            updateData} = this.state;
         const { role, requests, request } = this.props;
         return (
             <RequestView
