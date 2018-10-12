@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './Search';
+import Filter from './Filter';
 import ModalComponent from './ModalComponent';
 import RequestDetailsModal from './RequestDetailsModal';
 import RequestTable from './RequestTable';
@@ -12,7 +13,8 @@ const RequestView = (props) => {
         errorText, UserRequestTableColumns, requests,
         showDetailsModal, displayStyle, closeDetailsModal,
         search, updateRequest, handleUpdateInput, request,
-        updateData } = props
+        updateData, handleFilterInput, filter,
+        approveRequest, disapproveRequest, resolveRequest } = props
     return (
         <div>
             <div className={requestRowClass}>
@@ -28,12 +30,16 @@ const RequestView = (props) => {
                     showModal={showModal}
                     search={search}
                 />
-                : ''}
+                : <Filter
+                    handleFilterInput={handleFilterInput}
+                    filter={filter}
+                />}
             <RequestTable
                 UserRequestTableColumns={UserRequestTableColumns}
                 requests={requests}
                 showDetailsModal={showDetailsModal}
                 displayStyle={displayStyle}
+                role={role}
             />
             <ModalComponent
                 style={style}
@@ -52,7 +58,11 @@ const RequestView = (props) => {
                 request={request}
                 updateData={updateData}
                 errorText={errorText}
-            />
+                role={role}
+                approveRequest={approveRequest}
+                disapproveRequest={disapproveRequest}
+                resolveRequest={resolveRequest}
+            /> 
         </div>
     );
 }

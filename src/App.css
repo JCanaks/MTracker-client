@@ -2,10 +2,93 @@
     margin: 1rem;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.resolve {
+    background-color: #4CAF50;
+    border-radius: 10px;
+} 
+.resolve:hover {background-color: #46a049;}
+
+.approve {
+    background-color: #08a8dd;
+    border-radius: 10px;
+} 
+.approve:hover {background: #0795c5}
+
+.reject {
+    background-color: #ff3b30;
+    border-radius: 10px;
+} 
+.reject:hover {background: #ff251a;}
+.no-request{
+    text-align: center;
+    width: 100%;
+    color:red;
+}
  .header {
     display: flex;
     flex-flow: row;
     width:100%;
+}
+.request-form-font{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:12pt;
+    font-weight: 900;
+    color:  #666;
+}
+.request-form-font select{
+    width: 200px;
+    color:#737373;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:12pt;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 0.5em;
+    margin-bottom: 10px;
+    padding: 3px;
+}
+
+.request-form-font input[type=date]{
+    width: 200px;
+    color:#737373;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:12pt;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 0.5em;
+    margin-bottom: 10px;
+    padding: 3px;
+}
+.request-form-font input[type=text]{
+    width: 200px;
+    color:#737373;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:12pt;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 10px;
+    padding: 3px;
+}
+.request-form-font input[type=submit]{
+    border: none;
+    color: white;
+    background-color: #ff554d;
+    padding: 6px;
+    font-size: 11pt;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .details-column1{
     padding: 0.1em;
@@ -216,6 +299,9 @@
     padding: 0.55em 2.5em 0.55em;
     width:100%;
   }
+  .set-margin{
+    margin-top: 2em;
+}
   .request-button{
     border: none;
     color: white;
@@ -375,6 +461,16 @@
 .logo img{
   margin-left: 20px;
   margin-right:5px;
+}
+.details-btn {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    margin-left:8px;
+    margin-top: 1em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
 }
 .menubar {
   display: flex;
@@ -589,7 +685,7 @@
         display: block;
       }
       .modal-content {
-        width: 50%;
+        width: 70%;
     }
     .modal-content {
         font-size:12pt;

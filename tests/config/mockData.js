@@ -80,9 +80,6 @@ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
     + "MDEwOTM1fQ.5yKQckWiP857_AP3Ve8EXSxQB0QuLtKfLS3k2jdV0lg";
 
 const signup = () => { };
-const closeModal = () => { };
-const exitModal = () => { };
-const createRequest = () => { };
 const handleInput = () => { };
 const login = () => { };
 const logout = () => { };
@@ -123,15 +120,27 @@ const buttonAttributes = {
 const userProps = {
     success: true,
     updated: true,
-    getRequests: () => { 
+    approve: true,
+    resolve: true,
+    disapprove: true,
+    getAdminRequests: () => { },
+    approveRequest: () => { },
+    resolveRequest: () => { },
+    disapproveRequest: () => { },
+    getRequests: () => {
         return 'requests'
-     },
+    },
+    getRequest: () => { },
     closeModal: () => { },
-    newRequest: () => {},
+    closeDetailsModal: () => { },
+    newRequest: () => { },
     exitModal: () => { },
     createRequest: () => { },
     handleInput: () => { },
     showDetailsModal: () => { },
+    updateRequest: () => { },
+    filterRequests: () => { },
+    showModal: () => { },
     request: {
         requestId: 0,
         requestedBy: 'Jenny',
@@ -170,6 +179,13 @@ const userProps = {
             requestDate: '2018-03-18'
         },
     ],
+    filterData: {
+        requestId: 0,
+        requestType: 'none',
+        requestLevel: 'none',
+        department: 'none',
+        requestDate: '0000-00-00'
+    },
     errorText: '',
     requestRowClass: 'request-top-row',
     textMarginClass: 'text-margin1',
