@@ -43,7 +43,7 @@ export class Login extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors.message) {
             this.setState({
-                errorText:  nextProps.errors.message
+                errorText: nextProps.errors.message
             });
         }
     }
@@ -59,14 +59,24 @@ export class Login extends Component {
     }
     login(event) {
         event.preventDefault();
-        const{ userData } = this.state; 
+        const { userData } = this.state;
         const { login } = this.props;
         login(userData);
     }
     render() {
+        const { isLoading } = this.props;
         const { headerText, inputClass,
             inputTypes, departments, formType,
             buttonAttributes, errorText } = this.state;
+
+        if (isLoading) {
+            return (
+                <div className="center-image">
+                    <div><h1>Loading......</h1></div>
+                    <img class="img-size" src="https://res.cloudinary.com/dgwphdxui/image/upload/v1539342988/Mtracker/gear-spiiner.gif" />
+                </div>
+            )
+        }
         return (
             <AuthView
                 headerText={headerText}
@@ -83,9 +93,10 @@ export class Login extends Component {
     }
 }
 export const mapStateToProps = (state) => {
-    const { errors } = state.auth;
+    const { errors, isLoading } = state.auth;
     return {
         errors,
+        isLoading,
     };
 };
 export default connect(mapStateToProps, {
